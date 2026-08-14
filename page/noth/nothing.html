@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nothing OS 4.1 - PortoGabut</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Cukup panggil style utama dan style khusus detail -->
+  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="nothing.css">
+</head>
+<body>
+
+  <!-- Langsung Main Container (Header memanggil/menginduk ke style utama jika dibutuhkan) -->
+  <main class="detail-container">
+    
+    <!-- Tombol Kembali -->
+    <a href="../../index.html" class="btn-back">
+      ← Kembali ke Showcase
+    </a>
+
+    <!-- Kartu Utama Detail -->
+    <article class="detail-card">
+      
+      <!-- Banner Gambar Phone -->
+      <div class="banner-box">
+        <img src="../../images/showcase/noth/about_phone.png" alt="Nothing OS 4.1 About Phone" class="banner-img">
+      </div>
+
+      <!-- Header Info -->
+      <header class="detail-header">
+        <span class="chip">CUSTOM ROM</span>
+        <h1 class="detail-title">Nothing OS 4.1</h1>
+        <p class="detail-subtitle">Ported from Nothing Phone 2 (a)</p>
+      </header>
+
+      <!-- Isian Detail Placeholder -->
+      <section class="detail-content">
+        <div class="story-box" style="margin-bottom: 24px;">
+          <p class="story-date">📌 PROJECT STATUS</p>
+          <p class="story-text">Halaman ini adalah dokumentasi resmi porting Nothing OS 4.1 dari device Nothing Phone 2 (a).</p>
+        </div>
+
+        <h3 style="margin-bottom: 12px;">Highlights & Features</h3>
+        <ul style="padding-left: 20px; margin-bottom: 24px; color: var(--text-sub); line-height: 1.8;">
+          <li><strong>Nothing Dot-Matrix UI:</strong> Tampilan khas Nothing OS dengan font & widget ikonik.</li>
+          <li><strong>Glyph Interface Support:</strong> Adaptasi animasi Glyph untuk LED notification.</li>
+          <li><strong>Clean & Bloatfree:</strong> Performa ringan tanpa aplikasi bawaan tak terpakai.</li>
+          <li><strong>Smooth Animations:</strong> Tuning refresh rate 120Hz & latency touch responsif.</li>
+        </ul>
+
+        <!-- Box Placeholder -->
+        <div class="placeholder-box">
+          <p style="font-weight: 800; color: var(--accent); margin-bottom: 6px;">🚧 UNDER DEVELOPMENT</p>
+          <p style="font-size: 0.88rem; color: var(--text-sub);">
+            Changelog, link download ROM, vendor blobs, serta panduan instalasi akan di-update secara berkala di sini.
+          </p>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px;">
+          <button class="expressive-btn" id="btn-copy-link">🔗 Salin Link</button>
+          <a href="../../index.html" class="social-btn" style="padding: 12px 24px;">Ke Halaman Utama</a>
+        </div>
+      </section>
+
+    </article>
+  </main>
+
+  <script src="nothing.js"></script>
+</body>
+</html>

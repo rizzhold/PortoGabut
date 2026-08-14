@@ -1,0 +1,83 @@
+/* =========================================
+   STYLING KHUSUS NOTHING OS (WARISAN STYLE UTAMA)
+   ========================================= */
+
+.detail-container {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-card);
+  color: var(--text-main);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+
+.btn-back:hover {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 0 var(--glow-radius) var(--glow-color);
+  transform: translateX(-4px);
+}
+
+.detail-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-card);
+  padding: 32px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+}
+
+.banner-box {
+  width: 100%;
+  max-height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detail-header {
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+body.dark-mode .detail-header {
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.detail-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 8px 0 4px 0;
+}
+
+.detail-subtitle {
+  color: var(--text-sub);
+  font-size: 1rem;
+}
+
+.placeholder-box {
+  background: var(--bg-main);
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px dashed var(--accent);
+}
