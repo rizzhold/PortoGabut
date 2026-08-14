@@ -174,3 +174,15 @@ body.dark-mode .banner-box:hover {
   transform: translateX(6px);
   color: var(--text-main);
 }
+
+/* Hilangkan efek highlight biru bawaan HP saat tombol/link dipencet */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hilangkan garis border fokus (outline) bawaan browser */
+button:focus,
+a:focus,
+input:focus {
+  outline: none;
+}

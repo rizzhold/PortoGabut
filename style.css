@@ -30,15 +30,20 @@ body.dark-mode {
   --glow-color: rgba(56, 146, 255, 0.6);
 }
 
-/* =========================================
-   2. LAYOUT DASAR & NAVBAR
-   ========================================= */
+/* Hilangkan highlight biru bawaan HP */
 * { 
   box-sizing: border-box; 
   margin: 0; 
   padding: 0; 
   font-family: 'Plus Jakarta Sans', sans-serif; 
   transition: var(--transition); 
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+a:focus,
+input:focus {
+  outline: none;
 }
 
 body { 
@@ -47,7 +52,9 @@ body {
   padding-bottom: 50px; 
 }
 
-/* Top App Bar Header */
+/* =========================================
+   2. LAYOUT DASAR & NAVBAR
+   ========================================= */
 .top-app-bar {
   display: flex; 
   justify-content: space-between; 
@@ -60,7 +67,14 @@ body {
   box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
-.brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1.25rem; }
+.brand { 
+  display: flex; 
+  align-items: center; 
+  gap: 8px; 
+  font-weight: 800; 
+  font-size: 1.25rem; 
+  margin-right: 16px; /* Tambahin ini biar ada jarak */
+}
 
 .nav-right-group {
   display: flex;
@@ -69,28 +83,43 @@ body {
   margin-left: auto;
 }
 
+/* Segmented Nav & Floating Indicator */
 .segmented-nav {
+  position: relative;
   display: flex; 
   background: var(--bg-main); 
   padding: 4px; 
   border-radius: var(--radius-pill); 
-  gap: 4px;
+  gap: 0;
+}
+
+.nav-indicator {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  height: calc(100% - 8px);
+  background: var(--accent);
+  border-radius: var(--radius-pill);
+  box-shadow: 0 0 var(--glow-radius) var(--glow-color);
+  transition: transform 0.38s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.38s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
 }
 
 .nav-btn {
+  position: relative;
+  z-index: 2;
   border: none; 
-  background: transparent; 
+  background: transparent !important; 
   color: var(--text-sub);
   padding: 8px 18px; 
   border-radius: var(--radius-pill); 
   font-weight: 700; 
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .nav-btn.active { 
-  background: var(--accent); 
-  color: white; 
-  box-shadow: 0 0 var(--glow-radius) var(--glow-color); 
+  color: #ffffff !important; 
 }
 
 .nav-divider {
@@ -116,10 +145,26 @@ body .moon-icon { display: none; }
 body.dark-mode .sun-icon { display: none; } 
 body.dark-mode .moon-icon { display: block; }
 
-/* Main Content Area */
+/* Main Content Area & Page Animations */
 .main-content { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+
 .tab-pane { display: none; }
-.tab-pane.active { display: block; }
+
+.tab-pane.active { 
+  display: block; 
+  animation: pageEnter 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 
 /* =========================================
    3. DUAL-SLIDE WIDGET (HOME)
@@ -149,6 +194,30 @@ body.dark-mode .moon-icon { display: block; }
   background: #0a0d12; color: #3892ff; padding: 16px; border-radius: 16px;
   font-family: 'Fira Code', monospace; font-size: 0.9rem; margin-bottom: 16px; min-height: 110px;
   border: 1px solid rgba(56, 146, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-box::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg);
+  animation: scanlight 6s infinite linear;
+}
+
+@keyframes scanlight {
+  0% { transform: translate(-100%, -100%) rotate(30deg); }
+  100% { transform: translate(100%, 100%) rotate(30deg); }
 }
 
 .terminal-header { display: flex; gap: 6px; align-items: center; margin-bottom: 12px; }
@@ -179,23 +248,59 @@ body.dark-mode .moon-icon { display: block; }
 
 .filter-btn {
   background: var(--bg-card); border: 1px solid transparent; color: var(--text-sub); padding: 8px 18px;
-  border-radius: var(--radius-pill); font-weight: 700; cursor: pointer;
+  border-radius: var(--radius-pill); font-weight: 700; cursor: pointer; transition: all 0.25s ease;
 }
 
 .filter-btn.active { 
   background: var(--accent); 
   color: white; 
   box-shadow: 0 0 var(--glow-radius) var(--glow-color);
+  transform: scale(1.05);
 }
 
 .grid-showcase { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
 
+.card-item-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 .card-item {
   background: var(--bg-card); border-radius: 20px; overflow: hidden;
   box-shadow: 0 4px 12px rgba(0,0,0,0.04); cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
 }
 
-.card-item:hover { transform: translateY(-6px); box-shadow: 0 0 var(--glow-radius) var(--glow-color); }
+.card-item:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+body.dark-mode .card-item:hover {
+  box-shadow: 0 0 20px rgba(58, 146, 255, 0.2);
+}
+
+.card-img-wrapper {
+  width: 100%;
+  height: 160px;
+  background: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+}
+
+.card-item:hover .card-img {
+  transform: scale(1.05);
+}
 
 .card-img-placeholder {
   height: 140px; display: flex; align-items: center; justify-content: center;
@@ -211,10 +316,8 @@ body.dark-mode .moon-icon { display: block; }
 .card-info p { font-size: 0.85rem; color: var(--text-sub); }
 
 /* =========================================
-   5. ABOUT ME SECTION (FIXED FLEX/GRID)
+   5. ABOUT ME SECTION
    ========================================= */
-
-/* Hero Profil Header */
 .about-hero-card {
   background: var(--bg-card);
   padding: 32px;
@@ -243,7 +346,6 @@ body.dark-mode .moon-icon { display: block; }
   .about-hero-card { flex-direction: column; text-align: center; }
 }
 
-/* Grid 3 Kartu (Cita-cita, Goals, Harapan) */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -265,32 +367,17 @@ body.dark-mode .moon-icon { display: block; }
 
 .card-icon { font-size: 1.8rem; margin-bottom: 12px; }
 .about-card h3 { font-size: 1.1rem; margin-bottom: 10px; }
-.about-card p, .goals-list { font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; }
-.goals-list { list-style: none; padding: 0; }
-.goals-list li { margin-bottom: 6px; }
+.about-card p { font-size: 0.9rem; color: var(--text-sub); line-height: 1.5; }
 
-/* Personal Stats & Favorites (FULL LEBAR) */
 .stats-favorites-card {
   background: var(--bg-card);
   padding: 28px;
   border-radius: var(--radius-card);
   box-shadow: 0 4px 16px rgba(0,0,0,0.03);
-  display: block;
   width: 100%;
 }
 
-.stats-favorites-card h3 {
-  margin-bottom: 20px;
-  font-size: 1.2rem;
-  width: 100%;
-}
-
-.stats-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 24px;
-}
+.stats-favorites-card h3 { margin-bottom: 20px; font-size: 1.2rem; }
 
 .stat-item { width: 100%; }
 
@@ -344,107 +431,71 @@ body.dark-mode .social-section { border-top-color: rgba(255,255,255,0.08); }
   box-shadow: 0 0 var(--glow-radius) var(--glow-color);
 }
 
-/* Style Kartu Showcase Ber-link & Gambar Images */
-.card-item-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-.card-img-wrapper {
-  width: 100%;
-  height: 160px;
-  background: #000000;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition);
-}
-
-.card-item:hover .card-img {
-  transform: scale(1.05);
-}
-
 /* =========================================
-   ANIMASI MODERN HALAMAN UTAMA (INDEX)
+   FIX RESPONSIVE MOBILE (LAYAR KECIL)
    ========================================= */
-
-/* 1. Fade In Slide Up untuk Kartu Status & Header */
-.status-card, 
-.section-title, 
-.category-filter {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Delay Animasi Bertahap untuk Kartu Showcase (Stagger Effect) */
-.grid-showcase .card-item-link:nth-child(1) { animation: fadeInUp 0.5s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.grid-showcase .card-item-link:nth-child(2) { animation: fadeInUp 0.5s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.grid-showcase .card-item-link:nth-child(3) { animation: fadeInUp 0.5s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both; }
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
+@media (max-width: 600px) {
+  
+  /* 1. Header: Pakai Flex Column biar susunannya rapi atas-bawah */
+  .top-app-bar {
+    flex-direction: column;
+    padding: 12px;
+    gap: 12px;
+    align-items: flex-start;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .nav-right-group {
+    width: 100%;
+    justify-content: space-between;
   }
-}
 
-/* 2. Micro-interaction Hover Kartu Showcase */
-.card-item {
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
-}
+  /* Kecilin nav biar nggak makan tempat */
+  .segmented-nav {
+    transform: scale(0.85); /* Dikecilin 15% */
+    transform-origin: left;
+  }
 
-.card-item:hover {
-  transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
-}
+  /* 2. Widget Log/Story: Pakai Flex Wrap biar turun ke bawah kalau nggak muat */
+  .widget-header {
+    flex-direction: column; /* Jadi atas-bawah */
+    align-items: flex-start;
+    gap: 12px;
+  }
 
-body.dark-mode .card-item:hover {
-  box-shadow: 0 0 20px rgba(58, 146, 255, 0.2);
-}
+  .widget-tabs {
+    flex-wrap: wrap; /* Tombol pindah baris kalau sempit */
+    gap: 6px;
+  }
 
-/* 3. Animasi Terminal Status Box */
-.terminal-box {
-  position: relative;
-  overflow: hidden;
-}
+  .slide-tab {
+    padding: 5px 12px;
+    font-size: 0.75rem; /* Teks dikecilin */
+  }
 
-.terminal-box::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    60deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.05) 50%,
-    transparent 70%
-  );
-  transform: rotate(30deg);
-  animation: scanlight 6s infinite linear;
-}
+  .status-indicator {
+    font-size: 0.75rem; /* Indikator online dikecilin */
+  }
 
-@keyframes scanlight {
-  0% { transform: translate(-100%, -100%) rotate(30deg); }
-  100% { transform: translate(100%, 100%) rotate(30deg); }
-}
+  /* 3. Showcase Filter: Biar nggak menumpuk */
+  .filter-bar {
+    justify-content: center;
+  }
 
-/* 4. Active Filter Pill Smooth Transition */
-.filter-btn {
-  transition: all 0.25s ease;
-}
-.filter-btn.active {
-  transform: scale(1.05);
+  .filter-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem; /* Filter button dikecilin */
+  }
+
+  /* 4. Global Scaling untuk elemen lain biar gak sesak */
+  body {
+    font-size: 14px; /* Default font lebih kecil di HP */
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  
+  /* Kurangi padding card widget */
+  .slide-widget-container {
+    padding: 16px;
+  }
 }

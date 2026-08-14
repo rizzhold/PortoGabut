@@ -2,7 +2,8 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PENGUNCI SKALA VIEWPORT UNTUK PREVENT STRETCH/ZOOM SIMULATOR -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>PortoGabut - Expressive Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -19,7 +20,10 @@
 
     <!-- Kanan: Navigation + Divider + Actions -->
     <div class="nav-right-group">
-      <nav class="segmented-nav">
+      <nav class="segmented-nav" id="segmented-nav">
+        <!-- Floating Pill Indicator (Meluncur Mulus) -->
+        <div class="nav-indicator" id="nav-indicator"></div>
+
         <button class="nav-btn active" data-tab="home">Home</button>
         <button class="nav-btn" data-tab="about">About Me</button>
       </nav>
@@ -167,9 +171,9 @@
           <h3>Harapan</h3>
           <p>Komunitas modding lokal makin ramah pemula, dokumentasi makin rapi, dan HH tua tetep dapet umur panjang.</p>
         </div>
-      </div> <!-- TUTUP GRID DI SINI -->
+      </div>
 
-      <!-- 3. Personal Stats (BERDIRI SENDIRI DI LUAR GRID) -->
+      <!-- 3. Personal Stats -->
       <div class="stats-favorites-card">
         <h3>Personal Stats & Favorites 🎮</h3>
         
