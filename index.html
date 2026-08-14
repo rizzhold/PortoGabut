@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio Ngomprek Expressive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top App Bar -->
+  <header class="top-app-bar">
+    <div class="brand">
+      <span class="logo-icon">⚡</span>
+      <span class="brand-name">PortoGabut</span>
+    </div>
+
+    <nav class="segmented-nav">
+      <button class="nav-btn active" data-tab="home">Home</button>
+      <button class="nav-btn" data-tab="about">About Me</button>
+      <button class="nav-btn" data-tab="activity">My Activity</button>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn hamburger-btn" title="Menu (Placeholder)">☰</button>
+      <button id="theme-toggle" class="icon-btn theme-btn" title="Ganti Tema">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Content Container -->
+  <main class="main-content">
+    
+    <!-- ================= TAB 1: HOME ================= -->
+    <section id="tab-home" class="tab-pane active">
+      
+      <!-- Dual-Slide Widget -->
+      <div class="slide-widget-container">
+        <div class="widget-header">
+          <div class="widget-tabs">
+            <button class="slide-tab active" data-slide="slide-log">💻 Log Status</button>
+            <button class="slide-tab" data-slide="slide-story">📖 Story Hari Ini</button>
+          </div>
+          <span class="status-indicator"><span class="dot"></span> Online</span>
+        </div>
+
+        <div class="slides-wrapper">
+          <!-- Slide 1: Log Porting -->
+          <div id="slide-log" class="slide-content active">
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <span class="t-dot red"></span>
+                <span class="t-dot yellow"></span>
+                <span class="t-dot green"></span>
+                <span class="t-title">logcat_viewer.sh</span>
+              </div>
+              <div class="terminal-body" id="log-output">
+                [INFO] Kernel version 4.14.190 initialized.<br>
+                [SUCCESS] Mount /system and /vendor successful.<br>
+                [READY] Press button below to pull new log entry...
+              </div>
+            </div>
+            <button id="btn-gen-log" class="expressive-btn">🎲 Generate Random Log</button>
+          </div>
+
+          <!-- Slide 2: Story Hari Ini -->
+          <div id="slide-story" class="slide-content">
+            <div class="story-box">
+              <div class="story-date" id="story-date">Hari ini, 03:14 AM</div>
+              <p class="story-text" id="story-output">
+                "Niat awal cuma mau update Magisk, eh malah kebablasan wiping internal. Foto kenangan melayang, tapi kernel tetep smooth."
+              </p>
+            </div>
+            <button id="btn-gen-story" class="expressive-btn secondary">📖 Random Story Today</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screenshot Showcase -->
+      <div class="showcase-section">
+        <h2>Showcase Hasil Ngomprek 📸</h2>
+        
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Semua</button>
+          <button class="filter-btn" data-filter="rom">ROMs</button>
+          <button class="filter-btn" data-filter="recovery">Recovery</button>
+          <button class="filter-btn" data-filter="mods">Mods & Tools</button>
+        </div>
+
+        <div class="grid-showcase">
+          <div class="card-item" data-category="rom">
+            <div class="card-img-placeholder rom-bg">HyperOS Android 14</div>
+            <div class="card-info">
+              <h3>HyperOS Port v1.0.4</h3>
+              <p>Porting dari Poco F5 ke Redmi Note 8. Smooth, VoLTE fix!</p>
+            </div>
+          </div>
+
+          <div class="card-item" data-category="recovery">
+            <div class="card-img-placeholder recovery-bg">TWRP 3.7.0 Touch</div>
+            <div class="card-info">
+              <h3>TWRP Custom Theme</h3>
+              <p>Support decryption Android 14 & dynamic partitions.</p>
+            </div>
+          </div>
+
+          <div class="card-item" data-category="mods">
+            <div class="card-img-placeholder mods-bg">Thermal Engine Mod</div>
+            <div class="card-info">
+              <h3>Thermal Engine Extreme</h3>
+              <p>Bypass thermal throttling pas main heavy games.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: ABOUT ME ================= -->
+    <section id="tab-about" class="tab-pane">
+      <div class="about-card">
+        <div class="avatar-large">🛠️</div>
+        <h2>Porter / Modder Gabut</h2>
+        <p class="bio">Suka ngobrak-ngabrik Android vendor blobs, bikin custom kernel, sama pusing nyariin bug bootloop jam 2 pagi.</p>
+        
+        <h3>Device Favorit:</h3>
+        <div class="chip-group">
+          <span class="chip">Redmi Note 8 (ginkgo)</span>
+          <span class="chip">Poco F3 (alioth)</span>
+          <span class="chip">Redmi 9A (dandelion)</span>
+        </div>
+
+        <h3 style="margin-top: 20px;">Skills & Tools:</h3>
+        <div class="chip-group">
+          <span class="chip accent">C / C++</span>
+          <span class="chip accent">Shell Scripting</span>
+          <span class="chip accent">Magisk Module</span>
+          <span class="chip accent">Git / GitHub</span>
+          <span class="chip accent">Device Tree Building</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB 3: MY ACTIVITY ================= -->
+    <section id="tab-activity" class="tab-pane">
+      <h2>Timeline Aktivitas 🚀</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="time">Kemarin</div>
+          <div class="content">
+            <h4>Fix Camera HAL3 pada LineageOS 21</h4>
+            <p>Berhasil ngelakuin patch pada vendor blobs sensor kamera.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">3 Hari Lalu</div>
+          <div class="content">
+            <h4>Porting TWRP Recovery untuk Android 14</h4>
+            <p>Dekripsi data internal berjalan lancar tanpa error mount.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="time">Minggu Lalu</div>
+          <div class="content">
+            <h4>Release Custom Thermal Script v2.1</h4>
+            <p>Di-upload ke Telegram channel & dapet feedback positif.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
