@@ -81,3 +81,96 @@ body.dark-mode .detail-header {
   border-radius: 20px;
   border: 2px dashed var(--accent);
 }
+
+/* =========================================
+   ANIMASI & EFFEK SPECIAL NOTHING OS
+   ========================================= */
+
+/* A. Fade-In Slide Up saat Halaman Pertama Kali Dibuka */
+.detail-card {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.banner-box {
+  animation: zoomIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* B. Hover Micro-Interaction pada Gambar Phone */
+.banner-box {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.banner-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode .banner-box:hover {
+  box-shadow: 0 0 25px rgba(58, 146, 255, 0.25); /* Glow biru cyan pas dark mode */
+}
+
+/* C. Animasi "Pulsing" Dot-Matrix pada Badge Status */
+.chip, .badge-tag {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efek Kilatan/Shimmer pada Badge Status */
+.story-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.story-box::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  animation: sweep 4s infinite;
+}
+
+@keyframes sweep {
+  0% { left: -100%; }
+  30% { left: 200%; }
+  100% { left: 200%; }
+}
+
+/* D. Smooth Hover untuk List Features */
+.feature-list li {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.feature-list li:hover {
+  transform: translateX(6px);
+  color: var(--text-main);
+}
