@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PortoGabut - Expressive Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top App Bar Navbar -->
+  <header class="top-app-bar">
+    <!-- Kiri: Brand Logo -->
+    <div class="brand">
+      <span class="logo-icon">⚡</span>
+      <span class="brand-name">PortoGabut</span>
+    </div>
+
+    <!-- Kanan: Navigation + Divider + Actions -->
+    <div class="nav-right-group">
+      <nav class="segmented-nav">
+        <button class="nav-btn active" data-tab="home">Home</button>
+        <button class="nav-btn" data-tab="about">About Me</button>
+      </nav>
+
+      <!-- Pemisah Vertikal -->
+      <div class="nav-divider"></div>
+
+      <!-- Paling Pojok Kanan: Theme Toggle & Hamburger -->
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn theme-btn" title="Ganti Tema">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+        <button class="icon-btn hamburger-btn" title="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    
+    <!-- TAB 1: HOME -->
+    <section id="tab-home" class="tab-pane active">
+      
+      <!-- Dual-Slide Widget -->
+      <div class="slide-widget-container">
+        <div class="widget-header">
+          <div class="widget-tabs">
+            <button class="slide-tab active" data-slide="slide-log">💻 Log Status</button>
+            <button class="slide-tab" data-slide="slide-story">📖 Story Hari Ini</button>
+          </div>
+          <span class="status-indicator"><span class="dot"></span> Online</span>
+        </div>
+
+        <div class="slides-wrapper">
+          <!-- Slide 1: Log Terminal -->
+          <div id="slide-log" class="slide-content active">
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <span class="t-dot red"></span>
+                <span class="t-dot yellow"></span>
+                <span class="t-dot green"></span>
+                <span class="t-title">status_monitor.sh</span>
+              </div>
+              <div class="terminal-body" id="log-output">
+                [INFO] System initialized.<br>
+                [SUCCESS] Ready for app integration.
+              </div>
+            </div>
+            <button id="btn-gen-log" class="expressive-btn">🎲 Generate Random Log</button>
+          </div>
+
+          <!-- Slide 2: Story Hari Ini -->
+          <div id="slide-story" class="slide-content">
+            <div class="story-box">
+              <div class="story-date" id="story-date">Hari Ini</div>
+              <p class="story-text" id="story-output">
+                "Nantinya widget ini bakal bisa nampilin status langsung dari aplikasi buatan sendiri."
+              </p>
+            </div>
+            <button id="btn-gen-story" class="expressive-btn">📖 Random Story Today</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Showcase Section (3 Kategori Resmi) -->
+      <div class="showcase-section">
+        <h2>Showcase 📸</h2>
+        
+        <!-- Filter Bar 3 Kategori -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all">Semua</button>
+          <button class="filter-btn" data-filter="rom">ROM</button>
+          <button class="filter-btn" data-filter="module">Module</button>
+          <button class="filter-btn" data-filter="patch">Patch & Fixes</button>
+        </div>
+
+        <!-- Showcase Items Grid -->
+        <div class="grid-showcase">
+          <!-- Kartu Showcase Nothing OS 4.1 -->
+          <a href="page/nothing/nothing.html" class="card-item-link">
+            <div class="card-item" data-category="rom">
+              <div class="card-img-wrapper">
+                <img src="images/showcase/noth/about_phone.png" alt="Nothing OS 4.1" class="card-img">
+              </div>
+              <div class="card-info">
+                <h3>Nothing OS 4.1</h3>
+                <p>Ported from Nothing Phone 2 (a)</p>
+              </div>
+            </div>
+          </a>
+
+          <div class="card-item" data-category="module">
+            <div class="card-img-placeholder module-bg">Zygisk Thermal Fix</div>
+            <div class="card-info">
+              <h3>Extreme Thermal Module</h3>
+              <p>Modul Magisk/KSU unlock throttling game.</p>
+            </div>
+          </div>
+
+          <div class="card-item" data-category="patch">
+            <div class="card-img-placeholder patch-bg">VoLTE & Audio Patch</div>
+            <div class="card-info">
+              <h3>Vendor Blobs Fix</h3>
+              <p>Fix IMS VoLTE provider lokal & earpiece audio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: ABOUT ME (LENGKAP & BERSIH) -->
+    <section id="tab-about" class="tab-pane">
+      
+      <!-- 1. Hero Profile -->
+      <div class="about-hero-card">
+        <div class="profile-avatar-box">
+          <img src="images/foto-gueh.jpg" alt="Foto Profil" class="profile-avatar">
+        </div>
+        <div class="profile-info">
+          <h1 class="profile-name">Fatur</h1>
+          <p class="profile-title">Android Modder & UI/UX Designer</p>
+          <p class="profile-bio">
+            Suka ngobrak-ngabrik vendor blobs Android, porting custom ROM, dan ngulik kernel pas malam hari. Always learning & breaking stuff!
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Grid 3 Kartu (Cita-cita, Goals, Harapan) -->
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="card-icon">🌟</div>
+          <h3>Cita-cita</h3>
+          <p>Jadi System/Kernel Engineer atau maintainer resmi ROM internasional yang terpercaya.</p>
+        </div>
+
+        <div class="about-card">
+          <div class="card-icon">🎯</div>
+          <h3>Goals</h3>
+          <p>Maintain 1 ROM Official di device favorit, paham Linux Kernel, & bikin script otomatisasi porting.</p>
+        </div>
+
+        <div class="about-card">
+          <div class="card-icon">🕊️</div>
+          <h3>Harapan</h3>
+          <p>Komunitas modding lokal makin ramah pemula, dokumentasi makin rapi, dan HH tua tetep dapet umur panjang.</p>
+        </div>
+      </div> <!-- TUTUP GRID DI SINI -->
+
+      <!-- 3. Personal Stats (BERDIRI SENDIRI DI LUAR GRID) -->
+      <div class="stats-favorites-card">
+        <h3>Personal Stats & Favorites 🎮</h3>
+        
+        <div class="stat-item" style="margin-bottom: 16px;">
+          <span class="stat-label">❤️ WHAT I LIKE</span>
+          <div class="badges-group">
+            <span class="chip">Porting OEM ROM</span>
+            <span class="chip">Snack</span>
+            <span class="chip">Listening HipDut Music</span>
+            <span class="chip">Writing</span>
+          </div>
+        </div>
+
+        <div class="stat-item" style="margin-bottom: 16px;">
+          <span class="stat-label">🍕 FAVOURITE FOOD</span>
+          <p class="stat-value">Mie Ayam & Nasi Goreng</p>
+        </div>
+
+        <div class="stat-item" style="margin-bottom: 20px;">
+          <span class="stat-label">👥 TEMAN DEKAT</span>
+          <p class="stat-value"><strong>4 Orang</strong> (Teman Sekolah)</p>
+        </div>
+
+        <div class="social-section">
+          <span class="stat-label">🌐 TEMUKAN SAYA DI</span>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-btn">GitHub</a>
+            <a href="https://t.me" target="_blank" class="social-btn">Telegram</a>
+            <a href="https://instagram.com" target="_blank" class="social-btn">Instagram</a>
+            <a href="https://roblox.com" target="_blank" class="social-btn">Roblox</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
