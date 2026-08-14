@@ -6,13 +6,33 @@
   <title>Nothing OS 4.1 - PortoGabut</title>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
   
-  <!-- Cukup panggil style utama dan style khusus detail -->
+  <!-- Style Utama & Style Khusus Detail -->
   <link rel="stylesheet" href="../../style.css">
   <link rel="stylesheet" href="nothing.css">
 </head>
 <body>
 
-  <!-- Langsung Main Container (Header memanggil/menginduk ke style utama jika dibutuhkan) -->
+  <!-- 1. HEADER / TOP APP BAR UTAMA -->
+  <header class="top-app-bar">
+    <div class="brand">
+      <span class="logo-icon">⚡</span>
+      <span class="brand-name">PortoGabut</span>
+    </div>
+
+    <div class="header-actions">
+      <nav class="nav-links">
+        <a href="../../index.html" class="nav-btn">Home</a>
+        <a href="../../index.html" class="nav-btn">About Me</a>
+      </nav>
+
+      <button id="theme-toggle" class="icon-btn theme-btn" title="Ganti Tema">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- 2. KONTEN DETAIL -->
   <main class="detail-container">
     
     <!-- Tombol Kembali -->
@@ -25,7 +45,7 @@
       
       <!-- Banner Gambar Phone -->
       <div class="banner-box">
-        <img src="../../images/showcase/noth/about_phone.png" alt="Nothing OS 4.1 About Phone" class="banner-img">
+        <img src="../../images/noth/about_phone.png" alt="Nothing OS 4.1 About Phone" class="banner-img">
       </div>
 
       <!-- Header Info -->
@@ -67,6 +87,7 @@
     </article>
   </main>
 
+  <!-- 3. JAVASCRIPT KHUSUS NOTHING -->
   <script src="nothing.js"></script>
 </body>
 </html>
